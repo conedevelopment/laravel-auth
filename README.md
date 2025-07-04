@@ -1,1 +1,1 @@
-# Laravel Package Template
+# Laravel Auth Package

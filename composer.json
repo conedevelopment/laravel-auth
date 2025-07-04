@@ -1,6 +1,6 @@
 {
-    "name": "conedevelopment/package-name",
-    "description": "Package Description",
+    "name": "conedevelopment/laravel-auth",
+    "description": "Laravel auth package.",
     "license": "MIT",
     "type": "project",
     "keywords": [
@@ -15,28 +15,28 @@
     ],
     "require": {
         "php": "^8.3 || ^8.4",
-        "laravel/framework": "^11.0"
+        "laravel/framework": "^12.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
-        "laravel/laravel": "^10.16",
+        "laravel/laravel": "^12.0",
         "laravel/pint": "^1.6",
-        "mockery/mockery": "^1.4.4",
-        "larastan/larastan": "^2.7.0",
-        "phpunit/phpunit": "^10.2.5"
+        "mockery/mockery": "^1.6",
+        "larastan/larastan": "^3.4",
+        "phpunit/phpunit": "^11.5.3"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Cone\\Package\\": "src/",
-            "Cone\\Package\\Database\\Seeders\\": "database/seeders/",
-            "Cone\\Package\\Database\\Factories\\": "database/factories/"
+            "Cone\\Laravel\\Auth\\": "src/",
+            "Cone\\Laravel\\Auth\\Database\\Seeders\\": "database/seeders/",
+            "Cone\\Laravel\\Auth\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Cone\\Package\\Tests\\": "tests/"
+            "Cone\\Laravel\\Auth\\Tests\\": "tests/"
         }
     },
     "extra": {
@@ -45,7 +45,7 @@
         },
         "laravel": {
             "providers": [
-                "Cone\\Package\\PackageServiceProvider"
+                "Cone\\Laravel\\Auth\\AuthServiceProvider"
             ]
         }
     }

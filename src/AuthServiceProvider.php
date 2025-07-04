@@ -4,7 +4,7 @@ namespace Cone\Package;
 
 use Illuminate\Support\ServiceProvider;
 
-class PackageServiceProvider extends ServiceProvider
+class AuthServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -27,16 +27,15 @@ class PackageServiceProvider extends ServiceProvider
             ]);
 
             $this->publishes([
-                __DIR__.'/../config/package-name.php' => $this->app->configPath('package-name.php'),
-            ], 'package-name-config');
+                __DIR__.'/../config/laravel-auth.php' => $this->app->configPath('laravel-auth.php'),
+            ], 'laravel-auth-config');
 
             $this->publishes([
-                __DIR__.'/../resources/views' => $this->app->resourcePath('views/vendor/package-name'),
-            ], 'package-name-views');
+                __DIR__.'/../resources/views' => $this->app->resourcePath('views/vendor/laravel-auth'),
+            ], 'laravel-auth-views');
         }
 
-
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'package-name');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-auth');
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
     }
