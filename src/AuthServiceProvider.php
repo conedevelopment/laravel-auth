@@ -1,7 +1,11 @@
 <?php
 
-namespace Cone\Package;
+namespace Cone\Laravel\Auth;
 
+use Cone\Laravel\Auth\Http\Requests\LoginRequest;
+use Cone\Laravel\Auth\Http\Responses\LoginResponse;
+use Cone\Laravel\Auth\Interfaces\LoginResponse as LoginResponseContract;
+use Cone\Laravel\Auth\Interfaces\Requests\LoginRequest as LoginRequestContract;
 use Illuminate\Support\ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -11,7 +15,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(LoginResponseContract::class, LoginResponse::class);
+        $this->app->bind(LoginRequestContract::class, LoginRequest::class);
     }
 
     /**
