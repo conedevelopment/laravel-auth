@@ -4,8 +4,8 @@ namespace Cone\Laravel\Auth;
 
 use Cone\Laravel\Auth\Http\Requests\LoginRequest;
 use Cone\Laravel\Auth\Http\Responses\LoginResponse;
-use Cone\Laravel\Auth\Interfaces\LoginResponse as LoginResponseContract;
 use Cone\Laravel\Auth\Interfaces\Requests\LoginRequest as LoginRequestContract;
+use Cone\Laravel\Auth\Interfaces\Responses\LoginResponse as LoginResponseContract;
 use Illuminate\Support\ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider

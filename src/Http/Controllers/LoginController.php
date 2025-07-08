@@ -33,7 +33,7 @@ class LoginController extends Controller
      */
     public function show(): Response
     {
-        return ResponseFactory::view('auth.login');
+        return ResponseFactory::view('laravel-auth::auth.login');
     }
 
     /**
