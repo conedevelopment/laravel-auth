@@ -4,6 +4,7 @@ namespace Cone\Laravel\Auth;
 
 use Cone\Laravel\Auth\Http\Requests\LoginRequest;
 use Cone\Laravel\Auth\Http\Requests\RegisterRequest;
+use Cone\Laravel\Auth\Http\Requests\ResendRequest;
 use Cone\Laravel\Auth\Http\Responses\LoginResponse;
 use Cone\Laravel\Auth\Http\Responses\LogoutResponse;
 use Cone\Laravel\Auth\Http\Responses\RegisterResponse;
@@ -11,6 +12,7 @@ use Cone\Laravel\Auth\Http\Responses\ResendResponse;
 use Cone\Laravel\Auth\Http\Responses\VerifyResponse;
 use Cone\Laravel\Auth\Interfaces\Requests\LoginRequest as LoginRequestContract;
 use Cone\Laravel\Auth\Interfaces\Requests\RegisterRequest as RegisterRequestContract;
+use Cone\Laravel\Auth\Interfaces\Requests\ResendRequest as ResendRequestContract;
 use Cone\Laravel\Auth\Interfaces\Responses\LoginResponse as LoginResponseContract;
 use Cone\Laravel\Auth\Interfaces\Responses\LogoutResponse as LogoutResponseContract;
 use Cone\Laravel\Auth\Interfaces\Responses\RegisterResponse as RegisterResponseContract;
@@ -32,6 +34,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->app->bind(RegisterResponseContract::class, RegisterResponse::class);
         $this->app->bind(VerifyResponseContract::class, VerifyResponse::class);
         $this->app->bind(ResendResponseContract::class, ResendResponse::class);
+        $this->app->bind(ResendRequestContract::class, ResendRequest::class);
     }
 
     /**

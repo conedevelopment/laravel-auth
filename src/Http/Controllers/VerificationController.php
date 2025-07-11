@@ -3,6 +3,7 @@
 namespace Cone\Laravel\Auth\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Cone\Laravel\Auth\Interfaces\Requests\ResendRequest;
 use Cone\Laravel\Auth\Interfaces\Responses\ResendResponse;
 use Cone\Laravel\Auth\Interfaces\Responses\VerifyResponse;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -62,11 +63,9 @@ class VerificationController extends Controller
     /**
      * Resend the email verification notification.
      */
-    public function resend(Request $request): ResendResponse
+    public function resend(ResendRequest $request): ResendResponse
     {
-        $data = $request->validate([
-            'email' => ['required', 'string', 'email'],
-        ]);
+        $data = $request->validated();
 
         $model = Config::get('auth.providers.users.model');
 
