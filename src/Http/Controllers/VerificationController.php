@@ -3,12 +3,12 @@
 namespace Cone\Laravel\Auth\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Cone\Laravel\Auth\Http\Middleware\Unverified;
 use Cone\Laravel\Auth\Interfaces\Requests\ResendRequest;
 use Cone\Laravel\Auth\Interfaces\Responses\ResendResponse;
 use Cone\Laravel\Auth\Interfaces\Responses\VerifyResponse;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Events\Verified;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controllers\Middleware;
@@ -25,6 +25,7 @@ class VerificationController extends Controller
     public static function middleware(): array
     {
         return [
+            new Middleware(Unverified::class, only: ['show']),
             new Middleware('signed', only: ['verify']),
             new Middleware('throttle:6,1', only: ['verify', 'resend']),
         ];
@@ -33,11 +34,9 @@ class VerificationController extends Controller
     /**
      * Show the email verification notice.
      */
-    public function show(Request $request): Response|RedirectResponse
+    public function show(): Response
     {
-        return (bool) $request->user()?->hasVerifiedEmail()
-            ? ResponseFactory::redirectToRoute('login')
-            : ResponseFactory::view('auth.verify-email');
+        return ResponseFactory::view('auth.verify-email');
     }
 
     /**
