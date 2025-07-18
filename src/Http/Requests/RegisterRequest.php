@@ -2,7 +2,7 @@
 
 namespace Cone\Laravel\Auth\Http\Requests;
 
-use Cone\Laravel\Auth\Http\Requests\RegisterRequest as Contract;
+use Cone\Laravel\Auth\Interfaces\Requests\RegisterRequest as Contract;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest implements Contract

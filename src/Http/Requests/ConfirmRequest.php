@@ -2,7 +2,7 @@
 
 namespace Cone\Laravel\Auth\Http\Requests;
 
-use Cone\Laravel\Auth\Http\Requests\ConfirmRequest as Contract;
+use Cone\Laravel\Auth\Interfaces\Requests\ConfirmRequest as Contract;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ConfirmRequest extends FormRequest implements Contract
