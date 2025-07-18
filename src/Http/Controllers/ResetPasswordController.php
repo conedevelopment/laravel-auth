@@ -5,6 +5,8 @@ namespace Cone\Laravel\Auth\Http\Controllers;
 use Cone\Laravel\Auth\Interfaces\Requests\ResetPasswordRequest;
 use Cone\Laravel\Auth\Interfaces\Responses\ResetPasswordResponse;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -37,10 +39,10 @@ class ResetPasswordController extends Controller
     {
         $response = Password::broker()->reset(
             $request->only(['email', 'password', 'password_confirmation', 'token']),
-            function ($user, string $password): void {
+            function (Authenticatable $user, string $password): void {
                 $this->resetPassword($user, $password);
 
-                if (! $user->hasVerifiedEmail()) {
+                if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
                     $user->markEmailAsVerified();
                 }
             }
@@ -54,7 +56,7 @@ class ResetPasswordController extends Controller
     /**
      * Reset the given user's password.
      */
-    protected function resetPassword($user, string $password): void
+    protected function resetPassword(Authenticatable $user, string $password): void
     {
         $user->setAttribute('password', Hash::make($password));
 
