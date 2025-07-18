@@ -2,11 +2,12 @@
 
 namespace Cone\Laravel\Auth\Http\Responses;
 
-use Cone\Laravel\Auth\Interfaces\Responses\LoginResponse as Contract;
+use Cone\Laravel\Auth\Interfaces\Responses\ForgotPasswordResponse as Contract;
 use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Redirect;
 
-class LoginResponse implements Contract, Responsable
+class ForgotPasswordResponse implements Contract, Responsable
 {
     /**
      * Create an HTTP response that represents the object.
@@ -16,6 +17,7 @@ class LoginResponse implements Contract, Responsable
      */
     public function toResponse($request)
     {
-        return Redirect::intended('/');
+        return Redirect::route('password.request')
+            ->with('status', __(Password::RESET_LINK_SENT));
     }
 }

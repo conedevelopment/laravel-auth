@@ -2,11 +2,11 @@
 
 namespace Cone\Laravel\Auth\Http\Responses;
 
-use Cone\Laravel\Auth\Interfaces\Responses\LoginResponse as Contract;
+use Cone\Laravel\Auth\Interfaces\Responses\ConfirmResponse as Contract;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Support\Facades\Redirect;
 
-class LoginResponse implements Contract, Responsable
+class ConfirmResponse implements Contract, Responsable
 {
     /**
      * Create an HTTP response that represents the object.
