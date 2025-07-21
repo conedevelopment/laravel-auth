@@ -1,5 +1,6 @@
 <?php
 
+use Cone\Laravel\Auth\Http\Controllers\AuthCodeController;
 use Cone\Laravel\Auth\Http\Controllers\ConfirmPasswordController;
 use Cone\Laravel\Auth\Http\Controllers\ForgotPasswordController;
 use Cone\Laravel\Auth\Http\Controllers\LoginController;
@@ -31,3 +32,8 @@ Route::post('/email/resend', [VerificationController::class, 'resend'])->name('v
 // Confirm
 Route::get('/password/confirm', [ConfirmPasswordController::class, 'show'])->name('password.confirm');
 Route::post('/password/confirm', [ConfirmPasswordController::class, 'confirm']);
+
+// Auth Code Verification
+Route::get('/auth-code', [AuthCodeController::class, 'show'])->name('auth-code.show');
+Route::post('/auth-code', [AuthCodeController::class, 'verify'])->name('auth-code.verify');
+Route::post('/auth-code/resend', [AuthCodeController::class, 'resend'])->name('auth-code.resend');
