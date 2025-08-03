@@ -6,7 +6,6 @@ use Cone\Laravel\Auth\Http\Middleware\VerifiesAuthCodes;
 use Cone\Laravel\Auth\Interfaces\Requests\AuthCodeVerifyRequest;
 use Cone\Laravel\Auth\Interfaces\Responses\AuthCodeResendResponse;
 use Cone\Laravel\Auth\Interfaces\Responses\AuthCodeVerifyResponse;
-use Cone\Laravel\Auth\Notifications\AuthCodeNotification;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controllers\Middleware;
@@ -52,7 +51,7 @@ class AuthCodeController extends Controller
             Cookie::queue(
                 'device_token',
                 sha1(sprintf('%s:%s', $request->user()->getKey(), $request->user()->email)),
-                Date::now()->addYear()->diffInMinutes(absolute: true),
+                Date::now()->addMonth()->diffInMinutes(absolute: true),
             );
         }
 
@@ -66,7 +65,7 @@ class AuthCodeController extends Controller
     {
         $code = $request->user()->generateAuthCode();
 
-        $request->user()->notify(new AuthCodeNotification($code));
+        $request->user()->sendAuthCodeNotification($code);
 
         return App::make(AuthCodeResendResponse::class);
     }

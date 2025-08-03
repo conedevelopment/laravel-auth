@@ -13,6 +13,11 @@ interface VerifiesAuthCodes
     public function verifiesAuthCodes(): bool;
 
     /**
+     * Send the auth code notification to the user.
+     */
+    public function sendAuthCodeNotification(AuthCode $code): void;
+
+    /**
      * Get the auth codes for the user.
      */
     public function authCodes(): HasMany;

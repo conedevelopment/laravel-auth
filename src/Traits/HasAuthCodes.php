@@ -4,6 +4,7 @@ namespace Cone\Laravel\Auth\Traits;
 
 use Cone\Laravel\Auth\Interfaces\Models\AuthCode as AuthCodeContract;
 use Cone\Laravel\Auth\Models\AuthCode;
+use Cone\Laravel\Auth\Notifications\AuthCodeNotification;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Date;
@@ -16,6 +17,14 @@ trait HasAuthCodes
     public function verifiesAuthCodes(): bool
     {
         return true;
+    }
+
+    /**
+     * Send the auth code notification to the user.
+     */
+    public function sendAuthCodeNotification(AuthCode $code): void
+    {
+        $this->notify(new AuthCodeNotification($code));
     }
 
     /**
