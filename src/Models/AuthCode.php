@@ -18,7 +18,6 @@ class AuthCode extends Model implements Contract
      * @var array<string, string>
      */
     protected $casts = [
-        'code' => 'int',
         'expires_at' => 'datetime',
     ];
 

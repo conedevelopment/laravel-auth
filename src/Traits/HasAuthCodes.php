@@ -43,7 +43,7 @@ trait HasAuthCodes
         $this->authCodes()->delete();
 
         $code = $this->authCodes()->make()->forceFill([
-            'code' => mt_rand(100000, 999999),
+            'code' => str_shuffle(str_pad((string) mt_rand(100, 999999), 6, '0')),
             'expires_at' => Date::now()->addMinutes(5),
         ]);
 
