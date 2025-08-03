@@ -2,7 +2,7 @@
 
 namespace Cone\Laravel\Auth\Http\Controllers;
 
-use Cone\Laravel\Auth\Http\Middleware\MultiFactorAuthenticatable;
+use Cone\Laravel\Auth\Http\Middleware\VerifiesAuthCodes;
 use Cone\Laravel\Auth\Interfaces\Requests\AuthCodeVerifyRequest;
 use Cone\Laravel\Auth\Interfaces\Responses\AuthCodeResendResponse;
 use Cone\Laravel\Auth\Interfaces\Responses\AuthCodeVerifyResponse;
@@ -25,7 +25,7 @@ class AuthCodeController extends Controller
         return [
             new Middleware('auth'),
             new Middleware('throttle:6,1', only: ['resend']),
-            new Middleware(MultiFactorAuthenticatable::class),
+            new Middleware(VerifiesAuthCodes::class),
         ];
     }
 

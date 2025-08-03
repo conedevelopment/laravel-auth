@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Date;
 trait HasAuthCodes
 {
     /**
+     * Determine whether the user verifies auth codes.
+     */
+    public function verifiesAuthCodes(): bool
+    {
+        return true;
+    }
+
+    /**
      * Get the auth codes for the user.
      */
     public function authCodes(): HasMany

@@ -3,13 +3,13 @@
 namespace Cone\Laravel\Auth\Http\Middleware;
 
 use Closure;
-use Cone\Laravel\Auth\Interfaces\MultiFactorAuthenticatable as Contract;
 use Cone\Laravel\Auth\Interfaces\Responses\AuthCodeVerifyResponse;
+use Cone\Laravel\Auth\Interfaces\VerifiesAuthCodes as Contract;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Symfony\Component\HttpFoundation\Response;
 
-class MultiFactorAuthenticatable
+class VerifiesAuthCodes
 {
     /**
      * Handle an incoming request.

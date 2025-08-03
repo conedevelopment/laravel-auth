@@ -3,7 +3,7 @@
 ```php
 use App\Models\User;
 
-class User extends Authenticatable implements MultiFactorAuthenticatable
+class User extends Authenticatable implements VerifiesAuthCodes
 {
     use HasAuthCodes;
 
