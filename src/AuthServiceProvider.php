@@ -2,7 +2,7 @@
 
 namespace Cone\Laravel\Auth;
 
-use App\Console\Commands\ClearExpiredAuthCodes;
+use Cone\Laravel\Auth\Console\Commands\ClearExpiredAuthCodes;
 use Cone\Laravel\Auth\Http\Requests\AuthCodeVerifyRequest;
 use Cone\Laravel\Auth\Http\Requests\ConfirmRequest;
 use Cone\Laravel\Auth\Http\Requests\ForgotPasswordRequest;

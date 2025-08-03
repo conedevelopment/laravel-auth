@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Cone\Laravel\Auth\Console\Commands;
 
 use Cone\Laravel\Auth\Interfaces\Models\AuthCode;
 use Illuminate\Console\Command;
