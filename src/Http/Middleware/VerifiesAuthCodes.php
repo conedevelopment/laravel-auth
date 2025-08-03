@@ -18,7 +18,7 @@ class VerifiesAuthCodes
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (! $request->user() instanceof Contract) {
+        if (! $request->user() instanceof Contract || ! $request->user()->verifiesAuthCodes()) {
             return App::make(AuthCodeVerifyResponse::class)->toResponse($request);
         }
 
