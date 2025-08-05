@@ -39,6 +39,7 @@ use Cone\Laravel\Auth\Interfaces\Responses\ResendResponse as ResendResponseContr
 use Cone\Laravel\Auth\Interfaces\Responses\ResetPasswordResponse as ResetPasswordResponseContract;
 use Cone\Laravel\Auth\Interfaces\Responses\VerifyResponse as VerifyResponseContract;
 use Cone\Laravel\Auth\Models\AuthCode;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -91,6 +92,8 @@ class AuthServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-auth');
 
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        Route::prefix('auth')->middleware('web')->group(function (): void {
+            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        });
     }
 }
