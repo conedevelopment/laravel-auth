@@ -1,5 +1,5 @@
 {
-    "name": "conedevelopment/laravel-auth",
+    "name": "conedevelopment/auth",
     "description": "Laravel auth package.",
     "license": "MIT",
     "type": "project",

@@ -1,4 +1,4 @@
-@extends('laravel-auth::layout')
+@extends('auth::layout')
 
 {{-- Title --}}
 @section('title', __('Register'))

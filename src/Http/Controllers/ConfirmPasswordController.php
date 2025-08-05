@@ -26,7 +26,7 @@ class ConfirmPasswordController extends Controller
      */
     public function show(): Response
     {
-        return ResponseFactory::view('auth.confirm-password');
+        return ResponseFactory::view('auth::confirm-password');
     }
 
     /**

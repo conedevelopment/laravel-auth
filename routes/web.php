@@ -9,6 +9,8 @@ use Cone\Laravel\Auth\Http\Controllers\ResetPasswordController;
 use Cone\Laravel\Auth\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
 
+Route::redirect('/', '/auth/login');
+
 // Login
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);

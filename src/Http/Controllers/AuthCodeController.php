@@ -33,7 +33,7 @@ class AuthCodeController extends Controller
      */
     public function show(Request $request): Response
     {
-        return ResponseFactory::view('auth.auth-code', [
+        return ResponseFactory::view('auth::auth-code', [
             'code' => $request->input('code'),
         ]);
     }

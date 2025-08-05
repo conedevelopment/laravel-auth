@@ -27,7 +27,7 @@ class ForgotPasswordController extends Controller
      */
     public function show(): Response
     {
-        return ResponseFactory::view('auth.forgot-password');
+        return ResponseFactory::view('auth::forgot-password');
     }
 
     /**

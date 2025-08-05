@@ -82,15 +82,15 @@ class AuthServiceProvider extends ServiceProvider
             ]);
 
             $this->publishes([
-                __DIR__.'/../config/laravel-auth.php' => $this->app->configPath('laravel-auth.php'),
-            ], 'laravel-auth-config');
+                __DIR__.'/../config/auth.php' => $this->app->configPath('auth.php'),
+            ], 'auth-config');
 
             $this->publishes([
-                __DIR__.'/../resources/views' => $this->app->resourcePath('views/vendor/laravel-auth'),
-            ], 'laravel-auth-views');
+                __DIR__.'/../resources/views' => $this->app->resourcePath('views/vendor/auth'),
+            ], 'auth-views');
         }
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-auth');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'auth');
 
         Route::prefix('auth')->middleware('web')->group(function (): void {
             $this->loadRoutesFrom(__DIR__.'/../routes/web.php');

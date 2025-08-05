@@ -26,7 +26,7 @@ class ResetPasswordController extends Controller
      */
     public function show(Request $request): Response
     {
-        return ResponseFactory::view('auth.reset-password', [
+        return ResponseFactory::view('auth::reset-password', [
             'email' => $request->route()->parameter('email'),
             'token' => $request->route()->parameter('token'),
         ]);

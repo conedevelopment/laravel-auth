@@ -36,7 +36,7 @@ class VerificationController extends Controller
      */
     public function show(): Response
     {
-        return ResponseFactory::view('auth.verify-email');
+        return ResponseFactory::view('auth::verify-email');
     }
 
     /**

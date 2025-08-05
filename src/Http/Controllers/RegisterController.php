@@ -29,7 +29,7 @@ class RegisterController extends Controller
      */
     public function show(): Response
     {
-        return ResponseFactory::view('auth.register');
+        return ResponseFactory::view('auth::register');
     }
 
     /**
