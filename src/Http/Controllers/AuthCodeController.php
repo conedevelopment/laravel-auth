@@ -2,7 +2,7 @@
 
 namespace Cone\Laravel\Auth\Http\Controllers;
 
-use Cone\Laravel\Auth\Http\Middleware\VerifiesAuthCodes;
+use Closure;
 use Cone\Laravel\Auth\Interfaces\Requests\AuthCodeVerifyRequest;
 use Cone\Laravel\Auth\Interfaces\Responses\AuthCodeResendResponse;
 use Cone\Laravel\Auth\Interfaces\Responses\AuthCodeVerifyResponse;
@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Response as ResponseFactory;
+use Symfony\Component\HttpFoundation\Response as BaseResponse;
 
 class AuthCodeController extends Controller
 {
@@ -24,7 +25,13 @@ class AuthCodeController extends Controller
         return [
             new Middleware('auth'),
             new Middleware('throttle:6,1', only: ['resend']),
-            new Middleware(VerifiesAuthCodes::class),
+            new Middleware(static function (Request $request, Closure $next): BaseResponse {
+                if (! $request->user()->verifiesAuthCodes()) {
+                    return App::make(AuthCodeVerifyResponse::class);
+                }
+
+                return $next($request);
+            }),
         ];
     }
 
