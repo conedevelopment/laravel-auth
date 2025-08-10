@@ -2,7 +2,6 @@
     "name": "conedevelopment/laravel-auth",
     "description": "Laravel auth package.",
     "license": "MIT",
-    "type": "project",
     "keywords": [
         "laravel",
         "package"
