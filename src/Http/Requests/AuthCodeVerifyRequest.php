@@ -31,7 +31,7 @@ class AuthCodeVerifyRequest extends FormRequest implements Contract
                 'numeric',
                 Rule::exists('auth_codes', 'code')->where(function (Builder $query): Builder {
                     return $query->where('user_id', $this->user()->getKey())
-                            ->where('expires_at', '>', Date::now());
+                        ->where('expires_at', '>', Date::now());
                 }),
             ],
         ];

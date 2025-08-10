@@ -2,7 +2,15 @@
 
 ## Requirements
 
+- PHP 8.4
+- MySQL 8+
+- Laravel 12+
+
 ## Installation
+
+```sh
+composer require conedevelopment/laravel-auth
+```
 
 ## Config
 
@@ -18,3 +26,7 @@ class User extends Authenticatable implements VerifiesAuthCodes
 ```
 
 ## Commands
+
+```sh
+php artisan auth:clear-expired-auth-codes
+```
