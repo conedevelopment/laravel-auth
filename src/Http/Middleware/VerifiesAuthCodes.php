@@ -25,6 +25,6 @@ class VerifiesAuthCodes
             return $next($request);
         }
 
-        return Redirect::route('auth.auth-code.show');
+        return Redirect::route('auth-code.show');
     }
 }

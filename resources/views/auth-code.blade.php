@@ -3,12 +3,6 @@
 {{-- Title --}}
 @section('title', __('Verify Auth Code'))
 
-{{-- Footer --}}
-@section('footer')
-    <a href="{{ URL::route('password.request') }}">{{ __('Reset password') }}</a>
-    <a href="{{ URL::route('login') }}">{{ __('Login') }}</a>
-@endsection
-
 {{-- Content --}}
 @section('content')
     <form class="site-auth__panel" method="POST" action="{{ URL::route('auth-code.verify') }}">
@@ -35,7 +29,7 @@
                 </label>
             </div>
             <div class="form-group">
-                <button class="btn btn--primary btn--lg btn--block btn--primary-shadow">
+                <button class="btn btn--primary btn--block btn--primary-shadow">
                     {{ __('Verify') }}
                 </button>
             </div>

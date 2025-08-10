@@ -52,7 +52,7 @@ class AuthCodeNotification extends Notification implements ShouldQueue
         return (new MailMessage)
             ->subject(sprintf('%s - %s', Config::get('app.name'), __('Auth Code')))
             ->line(__('Your authentication code is: :code.', ['code' => $this->code->code]))
-            ->action(__('Verify Authentication'), URL::route('auth.auth-code.show', ['code' => $this->code->code]))
+            ->action(__('Verify Authentication'), URL::route('auth-code.show', ['code' => $this->code->code]))
             ->line(__('The code expires at :date.', ['date' => $this->code->expires_at->format('Y-m-d H:i:s')]));
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Cone\Laravel\Auth\Interfaces\Requests\LoginRequest;
 use Cone\Laravel\Auth\Interfaces\Responses\LoginResponse;
 use Cone\Laravel\Auth\Interfaces\Responses\LogoutResponse;
+use Cone\Laravel\Auth\Interfaces\VerifiesAuthCodes;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -54,6 +55,10 @@ class LoginController extends Controller
         }
 
         $request->session()->regenerate();
+
+        if ($request->user() instanceof VerifiesAuthCodes && $request->user()->verifiesAuthCodes()) {
+            $request->user()->sendAuthCodeNotification($request->user()->generateAuthCode());
+        }
 
         Event::dispatch(
             new Login(Auth::getDefaultDriver(), $request->user(), $request->filled('remember'))
